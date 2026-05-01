@@ -1,0 +1,101 @@
+```html
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>Salgados e Pizza da Cássia</title>
+
+<style>
+body {
+    font-family: Arial;
+    background: #f5f5f5;
+    text-align: center;
+}
+
+h1 {
+    background: #e63946;
+    color: white;
+    padding: 15px;
+}
+
+.card {
+    background: white;
+    margin: 10px auto;
+    padding: 15px;
+    width: 250px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px #ccc;
+}
+
+button {
+    background: #2a9d8f;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+}
+
+#carrinho {
+    background: #fff;
+    margin-top: 20px;
+    padding: 10px;
+}
+</style>
+</head>
+
+<body>
+
+<h1>Salgados e Pizza da Cássia</h1>
+
+<div class="card">
+    <h3>Pizza Calabresa</h3>
+    <p>R$ 30</p>
+    <button onclick="add('Pizza Calabresa')">Adicionar</button>
+</div>
+
+<div class="card">
+    <h3>Coxinha</h3>
+    <p>R$ 5</p>
+    <button onclick="add('Coxinha')">Adicionar</button>
+</div>
+
+<div class="card">
+    <h3>Pastel</h3>
+    <p>R$ 7</p>
+    <button onclick="add('Pastel')">Adicionar</button>
+</div>
+
+<div id="carrinho">
+    <h2>Carrinho</h2>
+    <ul id="lista"></ul>
+    <button onclick="finalizar()">Finalizar Pedido</button>
+</div>
+
+<script>
+let carrinho = [];
+
+function add(item) {
+    carrinho.push(item);
+    atualizar();
+}
+
+function atualizar() {
+    let lista = document.getElementById("lista");
+    lista.innerHTML = "";
+
+    carrinho.forEach(i => {
+        let li = document.createElement("li");
+        li.textContent = i;
+        lista.appendChild(li);
+    });
+}
+
+function finalizar() {
+    let mensagem = "Pedido:\n" + carrinho.join("\n");
+    window.open("https://wa.me/?text=" + encodeURIComponent(mensagem));
+}
+</script>
+
+</body>
+</html>
+```
